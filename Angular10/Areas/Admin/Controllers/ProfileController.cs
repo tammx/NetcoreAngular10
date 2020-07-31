@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ModelService;
 using UserService;
 using Microsoft.AspNetCore.Authorization;
-using WritableOptionsService;
+//using WritableOptionsService;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,7 +25,7 @@ namespace Angular10.Areas.Admin.Controllers
         private readonly DataProtectionKeys _dataProtectionKeys;
         private readonly AppSettings _appSettings;
         private readonly IUserSvc _userSvc;
-        private readonly IWritableSvc<SiteWideSettings> _writableSiteWideSettings;
+        //private readonly IWritableSvc<SiteWideSettings> _writableSiteWideSettings;
         private static AdminBaseViewModel _adminBaseViewModel;
 
         public ProfileController(
@@ -33,7 +33,7 @@ namespace Angular10.Areas.Admin.Controllers
             ICookieSvc cookieSvc,
             IServiceProvider provider,
             IOptions<DataProtectionKeys> dataProtectionKeys,
-            IOptions<AppSettings> appSettings, IWritableSvc<SiteWideSettings> writableSiteWideSettings)
+            IOptions<AppSettings> appSettings/*, IWritableSvc<SiteWideSettings> writableSiteWideSettings*/)
         {
 
             _userSvc = userSvc;
@@ -41,7 +41,7 @@ namespace Angular10.Areas.Admin.Controllers
             _provider = provider;
             _dataProtectionKeys = dataProtectionKeys.Value;
             _appSettings = appSettings.Value;
-            _writableSiteWideSettings = writableSiteWideSettings;
+            //_writableSiteWideSettings = writableSiteWideSettings;
         }
 
 
@@ -81,7 +81,7 @@ namespace Angular10.Areas.Admin.Controllers
                 AppSetting = null,
                 Dashboard = null,
                 ResetPassword = resetPassword,
-                SiteWideSetting = _writableSiteWideSettings.Value
+                //SiteWideSetting = _writableSiteWideSettings.Value
             };
            
         }

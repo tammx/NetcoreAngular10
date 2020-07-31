@@ -5,6 +5,7 @@ using CountryService;
 using DataService;
 using FiltersService;
 using FunctionalService;
+using IOptionsWriter;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -65,6 +66,12 @@ namespace Angular10
             services.AddTransient<IFunctionalSvc, FunctionalSvc>();
             services.Configure<AdminUserOptions>(Configuration.GetSection("AdminUserOptions"));
             services.Configure<AppUserOptions>(Configuration.GetSection("AppUserOptions"));
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                             Writable SERVICE                                                      */
+            /*---------------------------------------------------------------------------------------------------*/
+            //var siteWideSettingsSection = Configuration.GetSection("SiteWideSettings");
+            //services.ConfigureWritable<SiteWideSettings>(siteWideSettingsSection, "appsettings.json");
+
             /*---------------------------------------------------------------------------------------------------*/
             /*                              DEFAULT IDENTITY OPTIONS                                             */
             /*---------------------------------------------------------------------------------------------------*/
