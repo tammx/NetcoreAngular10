@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CMS_CORE_NG.Areas.Admin.Controllers
+namespace Angular10.Areas.Admin.Controllers
 {
     
     [Area("Admin")]

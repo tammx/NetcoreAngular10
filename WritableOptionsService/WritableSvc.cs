@@ -10,17 +10,17 @@ namespace WritableOptionsService
 {
     public class WritableSvc<T> : IWritableSvc<T> where T : class, new()
     {
-        //private readonly IWebHostEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
         private readonly IOptionsMonitor<T> _options;
         private readonly string _section;
         private readonly string _file;
 
-        public WritableSvc(/*IWebHostEnvironment environment,*/
+        public WritableSvc(IWebHostEnvironment environment,
             IOptionsMonitor<T> options,
             string section,
             string file)
         {
-            //_environment = environment;
+            _environment = environment;
             _options = options;
             _section = section;
             _file = file;
@@ -36,18 +36,18 @@ namespace WritableOptionsService
             var resultError = false;
             try
             {
-                //var fileProvider = _environment.ContentRootFileProvider;
-                //var fileInfo = fileProvider.GetFileInfo(_file);
-                //var physicalPath = fileInfo.PhysicalPath;
+                var fileProvider = _environment.ContentRootFileProvider;
+                var fileInfo = fileProvider.GetFileInfo(_file);
+                var physicalPath = fileInfo.PhysicalPath;
 
-                //var jObject = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(physicalPath));
-                //var sectionObject = jObject.TryGetValue(_section, out JToken section) ?
-                //    JsonConvert.DeserializeObject<T>(section.ToString()) : (Value ?? new T());
+                var jObject = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(physicalPath));
+                var sectionObject = jObject.TryGetValue(_section, out JToken section) ?
+                    JsonConvert.DeserializeObject<T>(section.ToString()) : (Value ?? new T());
 
-                //applyChanges(sectionObject);
+                applyChanges(sectionObject);
 
-                //jObject[_section] = JObject.Parse(JsonConvert.SerializeObject(sectionObject));
-                //File.WriteAllText(physicalPath, JsonConvert.SerializeObject(jObject, Formatting.Indented));
+                jObject[_section] = JObject.Parse(JsonConvert.SerializeObject(sectionObject));
+                File.WriteAllText(physicalPath, JsonConvert.SerializeObject(jObject, Formatting.Indented));
                 resultError = false;
             }
             catch (Exception ex)

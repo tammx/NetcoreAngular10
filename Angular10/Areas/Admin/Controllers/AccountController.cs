@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Http;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace CMS_CORE_NG.Areas.Admin.Controllers
+namespace Angular10.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class AccountController : Controller
