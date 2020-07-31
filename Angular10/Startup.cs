@@ -1,6 +1,7 @@
 using ActivityService;
 using AuthService;
 using CookieService;
+using CountryService;
 using DataService;
 using FiltersService;
 using FunctionalService;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +22,7 @@ using Microsoft.IdentityModel.Tokens;
 using ModelService;
 using System;
 using System.Text;
+using UserService;
 
 namespace Angular10
 {
@@ -52,10 +55,10 @@ namespace Angular10
             /*                              DB CONNECTION OPTIONS                                                */
             /*---------------------------------------------------------------------------------------------------*/
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("CmsCoreNg_DEV"), x => x.MigrationsAssembly("UI")));
+            options.UseSqlServer(Configuration.GetConnectionString("CmsCoreNg_DEV"), x => x.MigrationsAssembly("Angular10")));
 
             services.AddDbContext<DataProtectionKeysContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContext"), x => x.MigrationsAssembly("UI")));
+            options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContext"), x => x.MigrationsAssembly("Angular10")));
             /*---------------------------------------------------------------------------------------------------*/
             /*                             Functional SERVICE                                                    */
             /*---------------------------------------------------------------------------------------------------*/
@@ -97,6 +100,10 @@ namespace Angular10
             var dataProtectionSection = Configuration.GetSection("DataProtectionKeys");
             services.Configure<DataProtectionKeys>(dataProtectionSection);
             services.AddDataProtection().PersistKeysToDbContext<DataProtectionKeysContext>();
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                              USER HELPER SERVICE                                                  */
+            /*---------------------------------------------------------------------------------------------------*/
+            services.AddTransient<IUserSvc, UserSvc>();
 
             /*---------------------------------------------------------------------------------------------------*/
             /*                                 APPSETTINGS SERVICE                                               */
@@ -136,11 +143,35 @@ namespace Angular10
             /*                              ACTIVITY SERVICE                                                     */
             /*---------------------------------------------------------------------------------------------------*/
             services.AddTransient<IActivitySvc, ActivitySvc>();
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                              Country SERVICE                                                      */
+            /*---------------------------------------------------------------------------------------------------*/
+            services.AddTransient<ICountrySvc, CountrySvc>();
 
             /*---------------------------------------------------------------------------------------------------*/
             /*                                 AuthenticationSchemes SERVICE                                     */
             /*---------------------------------------------------------------------------------------------------*/
             services.AddAuthentication("Administrator").AddScheme<AdminAuthenticationOptions, AdminAuthenticationHandler>("Admin", null);
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                              ENABLE CORS                                                          */
+            /*---------------------------------------------------------------------------------------------------*/
+            services.AddCors(options => {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                });
+            });
+
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                              ENABLE API Versioning                                                */
+            /*---------------------------------------------------------------------------------------------------*/
+            services.AddApiVersioning(
+               options =>
+               {
+                   options.ReportApiVersions = true;
+                   options.AssumeDefaultVersionWhenUnspecified = true;
+                   options.DefaultApiVersion = new ApiVersion(1, 0);
+               });
 
         }
 

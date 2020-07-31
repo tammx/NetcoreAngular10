@@ -21,7 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookieService", "CookieServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiltersService", "FiltersService\FiltersService.csproj", "{138BFD1D-182E-49C1-A005-D54A4C99DD33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{72B5C6FD-88DB-4E4F-B4C8-4C2BDC9BB6EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\UserService.csproj", "{72B5C6FD-88DB-4E4F-B4C8-4C2BDC9BB6EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WritableOptionsService", "WritableOptionsService\WritableOptionsService.csproj", "{BD6DD9D9-8B4D-4C4E-8F75-30BD8721BA21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountryService", "CountryService\CountryService.csproj", "{7B7B2494-80C6-408F-B263-8321F0B010E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendService", "BackendService\BackendService.csproj", "{761F0CF4-3983-4A5C-A205-15A08C2EF639}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,18 @@ Global
 		{72B5C6FD-88DB-4E4F-B4C8-4C2BDC9BB6EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72B5C6FD-88DB-4E4F-B4C8-4C2BDC9BB6EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72B5C6FD-88DB-4E4F-B4C8-4C2BDC9BB6EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD6DD9D9-8B4D-4C4E-8F75-30BD8721BA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD6DD9D9-8B4D-4C4E-8F75-30BD8721BA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD6DD9D9-8B4D-4C4E-8F75-30BD8721BA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD6DD9D9-8B4D-4C4E-8F75-30BD8721BA21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B7B2494-80C6-408F-B263-8321F0B010E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B7B2494-80C6-408F-B263-8321F0B010E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B7B2494-80C6-408F-B263-8321F0B010E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B7B2494-80C6-408F-B263-8321F0B010E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{761F0CF4-3983-4A5C-A205-15A08C2EF639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761F0CF4-3983-4A5C-A205-15A08C2EF639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761F0CF4-3983-4A5C-A205-15A08C2EF639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761F0CF4-3983-4A5C-A205-15A08C2EF639}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

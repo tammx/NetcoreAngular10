@@ -27,7 +27,7 @@ namespace DataService
         public DbSet<AddressModel> Addresses { get; set; }
         public DbSet<TokenModel> Tokens { get; set; }
         public DbSet<ActivityModel> Activities { get; set; }
-        //public DbSet<CountryModel> Countries { get; set; }
+        public DbSet<CountryModel> Countries { get; set; }
     }
 }
 

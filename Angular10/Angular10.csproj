@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.6">
@@ -40,6 +41,10 @@
     <None Include="Areas\Admin\Views\Account\Login.cshtml" />
     <None Include="Areas\Admin\Views\Account\_ViewStart.cshtml" />
     <None Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Profile\Activity.cshtml" />
+    <None Include="Areas\Admin\Views\Profile\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Profile\Security.cshtml" />
+    <None Include="Areas\Admin\Views\Profile\_ViewStart.cshtml" />
     <None Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <None Include="Areas\Admin\Views\Shared\_ApplicationHeaderStylesPartial.cshtml" />
     <None Include="Areas\Admin\Views\Shared\_FooterLayout.cshtml" />
@@ -242,11 +247,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AuthService\AuthService.csproj" />
+    <ProjectReference Include="..\BackendService\BackendService.csproj" />
     <ProjectReference Include="..\CookieService\CookieService.csproj" />
+    <ProjectReference Include="..\CountryService\CountryService.csproj" />
     <ProjectReference Include="..\DataService\DataService.csproj" />
     <ProjectReference Include="..\FiltersService\FiltersService.csproj" />
     <ProjectReference Include="..\FunctionalService\FunctionalService.csproj" />
     <ProjectReference Include="..\LoggingService\LoggingService.csproj" />
+    <ProjectReference Include="..\UserService\UserService.csproj" />
+    <ProjectReference Include="..\WritableOptionsService\WritableOptionsService.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
